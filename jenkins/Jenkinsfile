@@ -1,12 +1,13 @@
 pipeline {
     agent any
-    environment {
-        POM_VERSION = ""
+    tools {
+        maven 'Maven 3.3.9'
+        jdk 'jdk8'
     }
     stages {
         stage('Build') {
             steps{
-                sh 'graddle build'
+                sh 'mvn -Dmaven.test.failure.ignore=true install'
             }
             post {
                 success {
