@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools {
-        maven 'maven 3.8.6'
+        maven 'gradle 8'
         jdk 'jdk9'
     }
     stages {
         stage('Build') {
             steps{
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
+                sh 'gradle clean build'
             }
             post {
                 success {
